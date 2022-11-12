@@ -16,8 +16,6 @@ tab = plateau(4)
 def displayTable(tab):
     for i in tab:
         print(i)
-
-tab[0][1] = 'X'
  
 displayTable(tab)
  
@@ -49,17 +47,62 @@ def checkDown (tab,x,y):
     return None
   else :
     return tab[x+1][y]
+
+#Fontion qui vérifie ce qu'il y a au dessus à gauche de la case selectionée en paramètre
+def checkUpLeft (tab,x,y):
+  if y == 0 and x == 0:
+    return None
+  else :
+    return tab[x-1][y-1]
+
+#Fontion qui vérifie ce qu'il y a au dessus à droite de la case selectionée en paramètre
+def checkUpRight (tab,x,y):
+  if y == 0 and x == len(tab):
+    return None
+  else :
+    return tab[x-1][y+1]
+
+#Fontion qui vérifie ce qu'il y a au dessous à gauche de la case selectionée en paramètre
+def checkDownLeft (tab,x,y):
+  if y == len(tab) and x == 0:
+    return None
+  else :
+    return tab[x+1][y-1]
+
+#Fontion qui vérifie ce qu'il y a au dessous à droite de la case selectionée en paramètre
+def checkDownRight (tab,x,y):
+  if y == len(tab) and x == len(tab):
+    return None
+  else :
+    return tab[x+1][y+1]
  
 def checkState (tab,x,y) :
-  #liste qui contient les cases adjascentes dans cet ordre Haut, Bas, Gauche, Droite
+  #liste qui contient les cases autour
   l = []
+  l.append(checkUpLeft(tab,x,y))
   l.append(checkUp(tab,x,y))
-  l.append(checkDown(tab,x,y))
-  l.append(checkLeft(tab,x,y))
+  l.append(checkUpRight(tab,x,y))
   l.append(checkRight(tab,x,y))
+  l.append(checkDownRight(tab,x,y))
+  l.append(checkDown(tab,x,y))
+  l.append(checkDownLeft(tab,x,y))
+  l.append(checkLeft(tab,x,y))
   return l
  
+def checkAround (liste) :
+  count = 0
+  for i in range(len(liste)-1) :
+    if liste[i] == 1 :
+      count = count + 1
+  return count
+
+def checkLife () :
+  
+
+
+liste = checkState(tab,1,1)
  
-print(checkState(tab,1,1))
+print(liste)
 print(checkUp(tab,1,1))
 print(checkDown(tab,1,1))
+print(checkAround(liste))
