@@ -16,7 +16,7 @@ tab = plateau(4)
 def displayTable(tab):
     for i in tab:
         print(i)
- 
+
 tab[0][1] = 'X'
  
 displayTable(tab)
