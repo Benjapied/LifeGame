@@ -63,3 +63,4 @@ def checkState (tab,x,y) :
 print(checkState(tab,1,1))
 print(checkUp(tab,1,1))
 print(checkDown(tab,1,1))
+ds
