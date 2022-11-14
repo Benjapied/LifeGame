@@ -77,7 +77,7 @@ def checkDownRight (tab,x,y):
     return tab[x+1][y+1]
  
 def checkState (tab,x,y) :
-  #liste qui contient les cases autour
+  '''Fonction qui va ajouter dans une liste les cellules à proximité de la cellule ciblé'''
   l = []
   l.append(checkUpLeft(tab,x,y))
   l.append(checkUp(tab,x,y))
@@ -90,27 +90,30 @@ def checkState (tab,x,y) :
   return l
  
 def checkAround (liste) :
+  '''Fonction qui va compter le nombre de 1 qu'il y a autour d'une cellule'''
   count = 0
   for i in range(len(liste)-1) :
     if liste[i] == 1 :
       count = count + 1
   return count
 
-def checkLife (tab,x,y) :
-  tab2 = plateau(len(tab))
+
+def checkLife (tab,x,y,tab2) :
+  '''Fonction qui modifie une cellule en fonction des cellules autours d'elles'''
   if checkAround(checkState(tab,x,y)) == 2 :
-    return
+    tab2 [x][y] = tab[x][y]
   if checkAround(checkState(tab,x,y)) == 3 :
     tab2[x][y] = 1 
   else :
     tab2[x][y] = 0
-  return tab2
 
 
 def fullCheck (tab) :
+  '''fonction qui va appliquer la modification de cellule à tout le tableau'''
+  tab2 = plateau(len(tab))
   for i in range (len(tab)) :
     for j in range (len(tab)) :
-      tab = checkLife (tab,i,j)
+      tab = checkLife (tab,i,j,tab2)
 
 for i in range (5):
   fullCheck(tab)
