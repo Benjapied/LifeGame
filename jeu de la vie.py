@@ -10,15 +10,12 @@ def plateau (x):
       tab.append(r.randint(0,1))
     tab2.append(tab)
   return tab2
- 
-tab = plateau(5)
 
 def displayTable(tab):
     for i in tab:
         print(i)
  
-displayTable(tab)
-print('\n')
+
  
 #Fontion qui vérifie si il y a un X au dessus de la case selectionée en paramètre
 def checkUp (tab,x,y):
@@ -92,7 +89,7 @@ def checkState (tab,x,y) :
 def checkAround (liste) :
   '''Fonction qui va compter le nombre de 1 qu'il y a autour d'une cellule'''
   count = 0
-  for i in range(len(liste)-1) :
+  for i in range(len(liste)) :
     if liste[i] == 1 :
       count = count + 1
   return count
@@ -113,9 +110,21 @@ def fullCheck (tab) :
   tab2 = plateau(len(tab))
   for i in range (len(tab)) :
     for j in range (len(tab)) :
-      tab = checkLife (tab,i,j,tab2)
+      checkLife (tab,i,j,tab2)
+  return tab2
 
-for i in range (5):
-  fullCheck(tab)
+tab = plateau(15)
+
+displayTable(tab)
+print('\n')
+
+'''for i in range (5) :
+  for y in range (5) :
+    print(checkState(tab,i,y))
+    print(checkAround(checkState(tab,i,y)))'''
+
+for i in range (10) :
+  tab = fullCheck(tab)
   displayTable(tab)
   print("\n")
+
