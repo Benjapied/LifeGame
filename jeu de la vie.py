@@ -18,7 +18,7 @@ def displayTable(tab):
         print(i)
  
 displayTable(tab)
- 
+print('\n')
  
 #Fontion qui vérifie si il y a un X au dessus de la case selectionée en paramètre
 def checkUp (tab,x,y):
@@ -110,7 +110,7 @@ def fullCheck (tab) :
     for j in range (len(tab)) :
       checkLife (tab,i,j)
 
-for i in range (10):
+for i in range (5):
   fullCheck(tab)
   displayTable(tab)
-  
+  print("\n")
