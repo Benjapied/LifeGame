@@ -96,13 +96,23 @@ def checkAround (liste) :
       count = count + 1
   return count
 
-def checkLife () :
-  
+def checkLife (tab,x,y) :
+  if checkAround(checkState(tab,x,y)) == 2 :
+    return
+  if checkAround(checkState(tab,x,y)) == 3 :
+    tab[x][y] = 1 
+  else :
+    tab[x][y] = 0
 
 
-liste = checkState(tab,1,1)
- 
-print(liste)
+def fullCheck (tab) :
+  for i in range (len(tab)) :
+    for j in range (len(tab)) :
+      checkLife (tab,i,j) 
+
+fullCheck(tab)
+
+displayTable(tab)
+
 print(checkUp(tab,1,1))
 print(checkDown(tab,1,1))
-print(checkAround(liste))
