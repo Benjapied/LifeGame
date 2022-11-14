@@ -97,18 +97,20 @@ def checkAround (liste) :
   return count
 
 def checkLife (tab,x,y) :
+  tab2 = plateau(len(tab))
   if checkAround(checkState(tab,x,y)) == 2 :
     return
   if checkAround(checkState(tab,x,y)) == 3 :
-    tab[x][y] = 1 
+    tab2[x][y] = 1 
   else :
-    tab[x][y] = 0
+    tab2[x][y] = 0
+  return tab2
 
 
 def fullCheck (tab) :
   for i in range (len(tab)) :
     for j in range (len(tab)) :
-      checkLife (tab,i,j)
+      tab = checkLife (tab,i,j)
 
 for i in range (5):
   fullCheck(tab)
