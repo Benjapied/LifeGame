@@ -110,16 +110,7 @@ def fullCheck (tab) :
     for j in range (len(tab)) :
       checkLife (tab,i,j)
 
-fullCheck(tab)
-
-print("\n")
-displayTable(tab)
-
-fullCheck(tab)
-
-print("\n")
-displayTable(tab)
-
-print(checkUp(tab,1,1))
-print(checkDown(tab,1,1))
-print(checkRight(tab,0,4))
+for i in range (10):
+  fullCheck(tab)
+  displayTable(tab)
+  
