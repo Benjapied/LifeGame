@@ -123,7 +123,7 @@ print('\n')
     print(checkState(tab,i,y))
     print(checkAround(checkState(tab,i,y)))'''
 
-for i in range (10) :
+for i in range (5) :
   tab = fullCheck(tab)
   displayTable(tab)
   print("\n")
